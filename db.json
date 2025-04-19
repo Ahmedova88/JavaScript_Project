@@ -1,0 +1,83 @@
+{
+    "products": [
+        {
+            "id": 1,
+            "title": "Black Chanel Gucci Handbag",
+            "price": "$130.00",
+            "sale": "From $340.00",
+            "description": "A luxurious choice with signature gold-toned accents and a sleek finish. This designer-inspired shoulder bag effortlessly complements both chic casual looks and evening wear, making it a go-to essential.",
+            "category": "women's bag",
+            "image": "./assets/img/kisspng-chanel-gucci-handbag-wallet-sell-my-gucci-bag-www-pixshark-com-images-galler-5b7def98c254a0 2.png",
+            "rating": {
+              "rate": 3.9,
+              "count": 120
+            }
+        },
+        {
+            "id": 2,
+            "title": "Navy & Cream Lancel Handbag",
+            "price": "$130.00",
+            "sale": "From $340.00",
+            "description": "Bold yet classy, this two-tone handbag blends deep navy with soft cream for a refined statement. Ideal for work or casual elegance, its structured body and fine detailing elevate your everyday look.",
+            "category": "women's bag",
+            "image": "./assets/img/kisspng-lancel-handbag-leather-clothing-accessories-women-bag-5abc8960466306 1.png",
+            "rating": {
+              "rate": 4.1,
+              "count": 259
+            }
+        },
+        {
+            "id": 3,
+            "title": "Burnt Orange Mini Bag",
+            "price": "$130.00",
+            "sale": "From $340.00",
+            "description": "Vibrant and playful, this compact burnt orange mini bag brings energy to any outfit. It’s small but practical — perfect for carrying your essentials when you’re on the move or out for the evening.",
+            "category": "women's bag",
+            "image": "./assets/img/5a34e83495d908 2.png",
+            "rating": {
+              "rate": 4.7,
+              "count": 500
+            }
+        },
+        {
+            "id": 4,
+            "title": "Beige Laptop Bag Backpack",
+            "price": "$130.00",
+            "sale": "From $340.00",
+            "description": "A modern minimalist backpack crafted for daily use. Its soft leather finish, neutral tones, and practical compartments make it perfect for casual outings or workdays on the go. Comfort meets contemporary design.",
+            "category": "women's bag",
+            "image": "./assets/img/kisspng-bag-laptop-backpack-knomo-beauchamp-5b0bf6a37cde46 13.png",
+            "rating": {
+              "rate": 2.1,
+              "count": 430
+            }
+        },
+        {
+            "id": 5,
+            "title": "Blush Pink Satchel Handbag",
+            "price": "$130.00",
+            "sale": "From $340.00",
+            "description": "This elegant blush pink handbag adds a soft, feminine touch to any outfit. With structured form and polished silver details, it's designed for those who appreciate both beauty and functionality in their accessories.",
+            "category": "women's bag",
+            "image": "./assets/img/kisspng-handbag-satchel-leather-coach-inc-tapestry-5adb94da175541 2.png",
+            "rating": {
+              "rate": 4.6,
+              "count": 400
+            }
+        },
+        {
+            "id": 6,
+            "title": "Classic Brown Business Bag",
+            "price": "$130.00",
+            "sale": "From $340.00",
+            "description": "Sophisticated and spacious, this leather business bag is tailored for professionals. It features a padded laptop compartment, secure zipper closures, and a timeless design that works perfectly for office or travel.",
+            "category": "women's bag",
+            "image": "./assets/img/kisspng-handbag-baggage-hand-luggage-leather-women-bag-5acd4069b62017 1.png",
+            "rating": {
+              "rate": 3.9,
+              "count": 70
+            }
+        }
+        
+    ]
+}
