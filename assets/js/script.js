@@ -65,6 +65,9 @@ document.addEventListener("DOMContentLoaded", () => {
             let cards = document.querySelector(".cards")
             cards.appendChild(card)
             })
+            document.querySelector('.sign-up').addEventListener('click', () => {
+              window.location.href = 'welcome.html';
+            });
         }
     createUserCard()
     })
