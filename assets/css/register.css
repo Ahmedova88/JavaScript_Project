@@ -53,3 +53,42 @@ body {
   .form-label {
     color: #fff;
   }
+
+    /* Responsivlik */
+    @media (max-width: 576px) {
+      .register {
+        width: 100%;
+        padding: 15px;
+        border-radius: 10px;
+      }
+    
+      .register_area {
+        padding: 20px;
+      }
+    
+      .title {
+        font-size: 24px;
+      }
+    
+      .submit {
+        padding: 12px;
+        font-size: 16px;
+      }
+    
+      .account-link {
+        width: 100%;
+        text-align: center;
+        display: block;
+        margin-top: 15px;
+      }
+    }
+    
+    @media (max-width: 350px) {
+      .title {
+        font-size: 20px;
+      }
+    
+      .submit {
+        font-size: 14px;
+      }
+    }
