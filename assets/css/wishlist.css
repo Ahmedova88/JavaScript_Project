@@ -150,11 +150,14 @@
   .wishlist {
     display: flex;
     flex-wrap: wrap;
-    gap: 20px;
-    justify-content: space-between;
+    gap: 60px;
     padding-bottom: 50px;
   }
   
+.col-9 {
+  padding-left: 90px;
+}
+
   .wishlist-item   {
     width: 360px;
     height: 508px;
@@ -226,18 +229,20 @@
     margin-left: 5px;
   }
   
-  .add-btn {
+  .add-to-cart {
     margin-top: 15px;
     width: 100%;
     padding: 8px;
-    border: 1px solid #000;
+    border: 1px none !important;
     border-radius: 6px;
-    background-color: white;
+    background-color: #E3B2AFFF;
+    color: white;
     cursor: pointer;
     transition: 0.3s ease;
+    display: block !important;
   }
   
-  .add-btn:hover {
+  .add-to-cart:hover {
     background-color: #000;
     color: white;
   }
