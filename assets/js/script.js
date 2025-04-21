@@ -5,11 +5,33 @@ document.addEventListener("DOMContentLoaded", () => {
       let users = JSON.parse(localStorage.getItem("snobellaa_users")) || [];
       let isLoginedUser = users.find((user) => user.isLogined == true);
       let userIndex = isLoginedUser ? users.findIndex((user) => user.id == isLoginedUser.id) : -1;
-      let userBtn = document.querySelector(".username a");
-      let login = document.querySelector(".login");
-      let register = document.querySelector(".register");
+      let userBtn = document.querySelector(".username");
       let logout = document.querySelector(".logout");
     
+
+      function updateUserStatus() {
+        if (isLoginedUser) {
+            logout.classList.remove("d-none");
+            userBtn.textContent = isLoginedUser.username;
+        } else {
+            logout.classList.add("d-none");
+            userBtn.textContent = "Username";
+        }
+    }
+
+    let logoutUserFunction = () => {
+        if (isLoginedUser) {
+            isLoginedUser.isLogined = false;
+            localStorage.setItem("users", JSON.stringify(users));
+            userBtn.textContent = "Username";
+        }
+        updateUserStatus();
+        window.location.reload();
+    };
+
+    logout.addEventListener("click", logoutUserFunction);
+    updateUserStatus();
+
         function createUserCard() { 
     
             data.forEach((product) => {
@@ -120,8 +142,61 @@ document.addEventListener("DOMContentLoaded", () => {
         }
 
         
-    createUserCard()
-    })
+        function addBasket(productId) {
+          if (!isLoginedUser) {
+              sweetToast("Please login to basket.")
+    
+              setTimeout(() => {
+                window.location.href = "login.html";
+              }, 1500);
+              return;
+            }
+    
+            if (isLoginedUser) {
+              let basket = isLoginedUser.basket || [];
+              let findProduct = basket.find((product) => product.id == productId)
+              if (findProduct) {
+              findProduct.count++
+            } else {
+              let existProduct = data.find((product) => product.id == productId)
+              basket.push({
+                ...existProduct,
+                price: parseFloat(existProduct.price.replace("$", "")),
+                count: 1
+              })
+            }
+            users[userIndex].basket = basket;
+            localStorage.setItem("snobellaa_users", JSON.stringify(users))
+            sweetToast("Product added to basket successfully...")
+            basketCount()
+            } else {
+              console.error("Istifadeci tapilmadi, zehmet olmasa sisteme daxil olun")
+            }
+    
+            
+        }
+    
+        function basketCount() {
+          if (isLoginedUser) {
+            let basket = isLoginedUser.basket || [];
+            let basketItemCount = basket.reduce(
+            (acc, product) => acc + product.count, 
+            0
+          )
+          let basketCountElem = document.querySelector(".basketIcon sup")
+          basketCountElem.textContent = basketItemCount
+          } else {
+            console.log("Istifadeci tapilmadi, zehmet olmasa sisteme daxil olun")
+          }
+          
+    
+          
+        }
+    
+        basketCount()
+        updateUserStatus()
+        createUserCard()
+    });
     
     })
     
