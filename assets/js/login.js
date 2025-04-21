@@ -43,7 +43,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
             if (loginedUser) {
                 loginedUser.isLogined = true
-                localStorage.setItem("users", JSON.stringify(users))
+                localStorage.setItem("snobellaa_users", JSON.stringify(users))
                 sweetToast("User login successfully...")
                 setTimeout(() => {
                     window.location.href = "index.html"

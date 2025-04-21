@@ -2,6 +2,13 @@ document.addEventListener("DOMContentLoaded", () => {
     fetch("http://localhost:3000/products")
     .then((response) => response.json())
     .then((data) => {
+      let users = JSON.parse(localStorage.getItem("snobellaa_users")) || [];
+      let isLoginedUser = users.find((user) => user.isLogined == true);
+      let userIndex = isLoginedUser ? users.findIndex((user) => user.id == isLoginedUser.id) : -1;
+      let userBtn = document.querySelector(".username a");
+      let login = document.querySelector(".login");
+      let register = document.querySelector(".register");
+      let logout = document.querySelector(".logout");
     
         function createUserCard() { 
     
@@ -14,6 +21,13 @@ document.addEventListener("DOMContentLoaded", () => {
     
             let heartIcon = document.createElement("i")
             heartIcon.classList.add("card-heart", "fa-regular", "fa-heart")
+            if (isLoginedUser && isLoginedUser.wishlist.some(item => item.id === product.id)) {
+              heartIcon.classList.add("fa-solid");
+              heartIcon.style.color = "red";
+            } else {
+              heartIcon.classList.add("fa-regular");
+              heartIcon.style.color = "black";
+            }
             heartIcon.addEventListener("click", (e) => {
               e.stopPropagation()
               toggleAddWishlist(product.id, heartIcon)
@@ -69,8 +83,58 @@ document.addEventListener("DOMContentLoaded", () => {
               window.location.href = 'welcome.html';
             });
         }
+
+        function toggleAddWishlist(productId, heartIcon) {
+          if (!isLoginedUser) {
+            sweetToast("You must be logged in to add to wishlist.");
+            setTimeout(() => {
+              window.location.href = "login.html";
+            }, 1500);
+            return;
+          }
+        
+          isLoginedUser.wishlist = isLoginedUser.wishlist || [];
+        
+          const index = isLoginedUser.wishlist.findIndex(item => item.id === productId);
+          const product = data.find(p => p.id === productId);
+        
+          if (index === -1 && product) {
+            isLoginedUser.wishlist.push(product);
+            heartIcon.classList.remove("fa-regular");
+            heartIcon.classList.add("fa-solid");
+            heartIcon.style.color = "red";
+            sweetToast("Product added to wishlist...")
+          } else {
+            isLoginedUser.wishlist.splice(index, 1);
+            heartIcon.classList.remove("fa-solid");
+            heartIcon.classList.add("fa-regular");
+            heartIcon.style.color = "black";
+            sweetToast("Product removed from wishlist...")
+          }
+        
+          const userIndex = users.findIndex(u => u.id === isLoginedUser.id);
+          if (userIndex !== -1) {
+            users[userIndex] = isLoginedUser;
+            localStorage.setItem("snobellaa_users", JSON.stringify(users));
+          } 
+        }
+
+        
     createUserCard()
     })
     
     })
     
+
+    let sweetToast = (text) => {
+      Toastify({
+          text: `${text}`,
+          className: "info",
+          duration: 3000,
+          position: "right",
+          style: {
+          background: "linear-gradient(90deg, #d1b3b1, #d39591, #f7d6d4)",
+          },
+        }).showToast();
+  }
+  
