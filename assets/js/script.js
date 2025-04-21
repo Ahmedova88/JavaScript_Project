@@ -159,11 +159,18 @@ document.addEventListener("DOMContentLoaded", () => {
               findProduct.count++
             } else {
               let existProduct = data.find((product) => product.id == productId)
+              let productPrice = existProduct.price;
+              if (typeof productPrice !== "string") {
+                productPrice = productPrice.toString();
+              }
+              
+              productPrice = productPrice.replace("$", "");
+        
               basket.push({
                 ...existProduct,
-                price: parseFloat(existProduct.price.replace("$", "")),
+                price: parseFloat(productPrice), 
                 count: 1
-              })
+              });
             }
             users[userIndex].basket = basket;
             localStorage.setItem("snobellaa_users", JSON.stringify(users))

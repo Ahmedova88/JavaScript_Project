@@ -109,3 +109,80 @@
   font-weight: bold;
   font-size: 18px;
 }
+
+.minus,
+.plus {
+  background-color: #DBA39FFF;
+  color: white;
+  padding: 5px;
+  border-radius: 5px;
+  width: 30px;
+  height: 30px;
+  border: none;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .mynavbar {
+    flex-direction: column;
+    align-items: flex-start; 
+  }
+
+  .search {
+    margin-top: 10px;
+    width: 100%;
+  }
+
+  .mynavbar .wrapper {
+    width: 100%;
+    justify-content: space-between;
+    margin-top: 10px;
+  }
+
+  .mynavbar .logo {
+    margin-bottom: 10px;
+  }
+
+  .container {
+    padding: 10px; 
+  }
+
+  .card-product {
+    flex-direction: column; 
+    align-items: flex-start;
+  }
+
+  .card-product img {
+    margin-bottom: 10px;
+  }
+
+  .cart-summary {
+    padding: 15px;
+  }
+
+  .empty-basket {
+    font-size: 16px;
+  }
+
+  .confirm-btn {
+    width: 100%; 
+  }
+}
+
+@media (max-width: 480px) {
+  .mynavbar .searchTerm {
+    font-size: 14px;
+  }
+
+  .cart-summary {
+    padding: 10px;
+  }
+
+  .confirm-btn {
+    padding: 12px; 
+  }
+
+  .card-product {
+    gap: 0.5rem;
+  }
+}

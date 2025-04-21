@@ -55,6 +55,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
             const quantity = document.createElement("div")
             const minusBtn = document.createElement("button")
+            minusBtn.classList.add("minus")
             minusBtn.textContent = "-"
             minusBtn.disabled = product.count <= 1
             minusBtn.addEventListener("click", () => {
@@ -72,6 +73,7 @@ document.addEventListener("DOMContentLoaded", () => {
             count.style.margin = "0 10px"
 
             const plusBtn = document.createElement("button")
+            plusBtn.classList.add("plus")
             plusBtn.textContent = "+"
             plusBtn.addEventListener("click", () => {
                 product.count++
@@ -83,9 +85,8 @@ document.addEventListener("DOMContentLoaded", () => {
 
             quantity.append(minusBtn, count, plusBtn)
 
-            const price = document.createElement("p")
-            price.textContent = "$" + (parseFloat(product.price.replace("$", "")) * product.count).toFixed(2)
-
+            const itemPrice = typeof product.price === "string" ? parseFloat(product.price.replace("$", "")) : product.price;
+            itemPrice.textContent = "$" + (itemPrice * product.count).toFixed(2);
 
             const buttons = document.createElement("div")
             buttons.className = "d-flex justify-content-end"
@@ -101,7 +102,7 @@ document.addEventListener("DOMContentLoaded", () => {
             })
             buttons.append(removeBtn)
 
-            infoDiv.append(title, size, delivery, quantity, price, buttons)
+            infoDiv.append(title, size, delivery, quantity, itemPrice, buttons)
             productDiv.append(img, infoDiv)
             basketArea.appendChild(productDiv)
         })
@@ -121,8 +122,8 @@ document.addEventListener("DOMContentLoaded", () => {
 
     function updateTotals() {
         const total = basket.reduce((sum, item) => {
-            const itemPrice = parseFloat(item.price.replace("$", ""));
-            return sum + (itemPrice * item.count);
+            const itemPrice = typeof item.price === "string" ? parseFloat(item.price.replace("$", "")) : item.price;
+        return sum + (itemPrice * item.count);
         }, 0);
         document.querySelector(".total-price").textContent = total.toFixed(2); 
         document.querySelector(".subtotal").textContent = total.toFixed(2); 
